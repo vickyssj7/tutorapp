@@ -1,0 +1,40 @@
+<ion-view view-title="Tutor Notes">
+	<ion-nav-title>
+		<div class="bar bar-header bar-calm">
+		  <h1 class="title">Notes</h1>
+		</div>
+	</ion-nav-title>
+    <ion-content>
+		<div>
+			<div class="list card" id = "notes-container">
+				<div class="item item-body">
+					<h2 class = "text-center cat-heading" ng-if="Category">{{Category}}</h2>					
+					<div>
+						<h4 class = "text-center" ng-show="startListening==0 && is_clicked == 0">Click any one of the button below to start.</h4>
+						<textarea rows = '5' style = "width:100%;" placeholder = "{{placeholder}}" readonly ng-model="recordedContent">
+							{{recordedContent}}
+						</textarea>
+					</div>
+				</div>
+				<div class = "text-center button-notes">
+					<div class = "speak-btn">
+						<button class="button start-speech button-full icon-left button-royal ion-music-note" ng-show="startListening==0" ng-click="startRecognition()">Speak</button>
+					</div>
+					<div class = "type-btn">
+						<button class="button start-type icon-left button-full ion-android-create button-balanced" ng-click="typeInput()">Type</button>
+					</div>
+					<button class="button button-full button-assertive" ng-if="is_clicked" ng-click="cancelInput()">
+						Cancel Input
+					</button>
+					<!--<button class="button button-full button-assertive" ng-if="isStopped" ng-click="clearInput()">
+						Clear Input
+					</button>-->
+					<button class="button button-full button-calm" ng-if="recordedContent && !hideSavenote" ng-click="saveNote()">Save Note</button>
+				</div>
+				<div class="button button-full speech-end button-royal" ng-show="startListening==1" ng-click="stopRecognition()">
+					<ion-spinner name="ios" style ="position: relative;top:7px;"></ion-spinner> Listening (Press to stop)...
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

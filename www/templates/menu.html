@@ -1,0 +1,38 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+        <ion-nav-bar class="bar-calm">
+            <ion-nav-back-button class="no-text">
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+	<ion-side-menu side="left">
+		<ion-header-bar class = "expanded">
+			<img ng-if="profile_img.length" src="{{profile_img}}" class="avatar motion spin fade">
+			<img ng-if="profile_img.length==0" src="../img/logo.jpg" class="avatar motion spin fade">
+			<div class="menu-bottom">
+                {{logged_user_name || 'Tutor Mate'}}
+            </div>
+		</ion-header-bar>
+		<ion-content class="stable-bg has-expanded-header">
+		  <ion-list class="ng-cloak">
+			<ion-item class="item-icon-left" menu-close ng-if="!is_loggedin" ui-sref="menu.login">
+				<i class="icon ion-locked"></i> Login
+			</ion-item>
+			<!--<ion-item class="item-icon-left" ng-if="is_loggedin">
+				<i class="icon ion-person"></i> {{logged_user_name}}
+			</ion-item>-->
+			<ion-item class="item-icon-left" ui-sref="menu.tutees" ng-if="is_loggedin" nav-clear menu-close>
+				<i class="icon ion-person-stalker"></i> My Tutees
+			</ion-item>
+			<ion-item class="item-icon-left" ng-click = "logout()" ng-if="is_loggedin" ng-controller = "logoutCtrl" menu-close>
+				<i class="icon ion-android-exit"></i> Logout
+			</ion-item>
+		  </ion-list>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>

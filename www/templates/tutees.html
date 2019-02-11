@@ -1,0 +1,27 @@
+<ion-view view-title="My Tutees">
+	<ion-nav-title>
+		<div class="bar bar-header bar-calm">
+		  <h1 class="title">My Tutees</h1>
+		</div>
+	</ion-nav-title>
+    <ion-content>
+		<ion-refresher on-refresh="doRefresh($event)">
+		</ion-refresher>
+		<div ng-if="tutees.length">	
+			<ion-item class="item-text-wrap main-heading bar bar-positive" style = "margin-bottom: 11px;">
+				Select tutee to add note.
+			</ion-item>
+			<div ng-repeat="tutee in tutees" class="card tutee-list">
+				<div class="item item-thumbnail-left " ng-click="selectedTutee($event)" data-tuteename="{{tutee.name}}" data-tutee="{{tutee.id}}">
+				  <img src="{{tutee.profile_pic ? tutee.profile_pic : '../img/dummy_user.png'}}">
+				  <h2>{{tutee.name}}</h2>
+				  <p>{{tutee.email}}</p>
+				  <p>{{tutee.phone}}</p>
+				</div>
+			</div>
+		</div>
+		<ion-item class="item-text-wrap" style = "text-align:center;font-size: 16px;" ng-show="tutees.length==0">
+			{{info_msg}}
+		</ion-item>
+	</ion-content>
+</ion-view>

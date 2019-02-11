@@ -1,0 +1,51 @@
+{
+  "name": "tutorapp",
+  "version": "0.0.1",
+  "description": "An Ionic project",
+  "devDependencies": {
+    "@ionic/v1-toolkit": "^1.0.0",
+    "gulp": "^3.5.6",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "@ionic-native/ionic-webview": "^5.0.0-beta.11",
+    "@ionic/pro": "2.0.4",
+    "cordova-android": "7.1.4",
+    "cordova-ios": "4.5.5",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-file": "^6.0.1",
+    "cordova-plugin-ionic-keyboard": "^2.1.3",
+    "cordova-plugin-ionic-webview": "^2.3.1",
+    "cordova-plugin-media": "^5.0.2",
+    "cordova-plugin-network-information": "^2.0.1",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "phonegap-plugin-speech-recognition": "git+https://github.com/macdonst/SpeechRecognitionPlugin.git"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-media": {
+        "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO"
+      },
+      "cordova-plugin-ionic-webview": {},
+      "phonegap-plugin-speech-recognition": {
+        "MICROPHONE_USAGE_DESCRIPTION": " ",
+        "SPEECH_RECOGNITION_USAGE_DESCRIPTION": " "
+      },
+      "cordova-plugin-network-information": {}
+    },
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  }
+}

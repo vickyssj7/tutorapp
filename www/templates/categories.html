@@ -1,0 +1,39 @@
+<ion-view view-title="Pastoral Categories">
+	<ion-nav-title>
+		<div class="bar bar-header bar-light">
+		  <h1 class="title">Pastoral Categories</h1>
+		</div>
+	</ion-nav-title>
+    
+    <ion-content>
+		<ion-refresher on-refresh="doRefresh($event)">
+		</ion-refresher>
+		<div>
+			<ion-item class="item-text-wrap main-heading bar bar-positive ion-person" ng-show = "selectedTuteeName" style = "margin-bottom: 11px;">
+				Tutee: {{selectedTuteeName}}
+			</ion-item>
+			<div class="card" ng-if="categories.length">
+				<h1 class = "item text-center heading item-text-wrap ion-reorder">Choose category from the given list</h1>
+				<p class = " text-center item-text-wrap" ng-show="trafficLights">Add another note by selecting different category.</p>
+				<ion-list >
+					  <ion-radio ng-repeat="pastoral_cat in categories" name="pastoral_category" ng-click="selectCategory($event)" ng-value="pastoral_cat.cat_id"><span class = "added-cat" ng-if="catData | contains: pastoral_cat.cat_id"></span> {{pastoral_cat.cat_name}}</ion-radio>
+				</ion-list>
+			</div>
+			<div class="card" ng-show="trafficLights">
+				<h1 class = "item text-center heading item-text-wrap">Choose traffic light if you are satisfied with your current note(s).</h1>
+				<ion-list class = "traffic-lights">
+					<ion-radio ng-click="trafficLight($event)" name="traffic_light" ng-value="green" style="background:green"></ion-radio>
+					<ion-radio ng-click="trafficLight($event)" checked="true" name="traffic_light" ng-value="amber" style="background:orange"></ion-radio>
+					<ion-radio ng-click="trafficLight($event)" name="traffic_light" ng-value="red" style="background:red"></ion-radio>
+				</ion-list>
+			</div>
+			<div class="text-center notes-action-btn" ng-show="sendNoteButton">
+				<button class="button icon-left button-balanced" ng-show="trafficLights" ng-click="sendNote()">Send</button>
+				<button class="button icon-left button-assertive" ng-show="trafficLights" ng-click="exitTutorNote()">Exit Note</button>
+			</div>
+			<ion-item class="item-text-wrap" style = "text-align:center;font-size: 16px;" ng-show="categories.length==0">
+				{{info_msg}}
+			</ion-item>
+		</div>
+	</ion-content>
+</ion-view>
